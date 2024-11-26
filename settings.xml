@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>preethikunderu@gmail.com</username>
-      <password>cmVmdGtuOjAxOjE3NjQxMTgyNDM6UFlScFhFSmNzbmpMbWRidTFTN1JKYlpmak4x</password>
+      <username>xxx</username>
+      <password>xxx</password>
       <id>central</id>
     </server>
     <server>
-      <username>preethikunderu@gmail.com</username>
-      <password>cmVmdGtuOjAxOjE3NjQxMTgyNDM6UFlScFhFSmNzbmpMbWRidTFTN1JKYlpmak4x</password>
+      <username>xxx</username>
+      <password>xxx</password>
       <id>snapshots</id>
     </server>
   </servers>
