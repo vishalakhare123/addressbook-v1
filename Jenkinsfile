@@ -29,5 +29,23 @@ pipeline {
             }
             
         }
+        stage('CodeCoverage') {
+            steps {
+                script{
+                    echo "Code Coverage by jacoco"
+                }
+                
+            }
+            
+        }
+        stage('Package') {
+            steps {
+                script{
+                    echo "packaging the code"
+                }
+                
+            }
+            
+        }
     }
 }
