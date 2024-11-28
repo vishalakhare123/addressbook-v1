@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script{
                     echo "packaging the code"
-                    echo 'platform is ${params.Platform}'
+                    echo 'platform is ${Platform}'
                     echo "packing the version ${params.APPVERSION}"
                 }
                 
