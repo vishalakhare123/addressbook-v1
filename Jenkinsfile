@@ -11,6 +11,9 @@ pipeline {
         choice(name:'APPVERSION',choices:['1.1','1.2','1.3'])
 
     }
+    environment{
+        BUILD_SEVER='ec2-user@172.31.3.48'
+    }
 
     stages {
         stage('Compile') {
@@ -79,14 +82,19 @@ pipeline {
             }
             steps {
                 script{
+                    sshagent(['slave2']) {
                     echo "packaging the code"
                     echo 'platform is ${Platform}'
                     echo "packing the version ${params.APPVERSION}"
-                    sh "mvn package"
+                    //sh "mvn package"
+                    sh "scp  -o StrictHostKeyChecking=no server-script.sh ${BUILD_SERVER}:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} 'bash ~/server-script.sh'"
+                    
                 }
                 
             }
             
         }
     }
+}
 }
