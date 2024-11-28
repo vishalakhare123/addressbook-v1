@@ -56,12 +56,13 @@ pipeline {
                 message "Select the platform for deployment"
                 ok "Platform Selected"
                 parameters{
-                    choice(name:'NEWAPP',choices:['EKS','EC2','On-prem'])
+                    choice(name:'Platform',choices:['EKS','EC2','On-prem'])
                 }
             }
             steps {
                 script{
                     echo "packaging the code"
+                    echo "platform is ${params.Platform}"
                     echo "packing the version ${params.APPVERSION}"
                 }
                 
