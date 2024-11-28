@@ -13,7 +13,8 @@ pipeline {
             steps {
                 script{
                     echo "Compiling the code"
-                   echo "Compileing in ${params.Env}"
+                   echo "Compiling in ${params.Env}"
+                   sh "mvn compile"
                 }
                 
             }
@@ -23,6 +24,7 @@ pipeline {
             steps {
                 script{
                     echo "Code Review Using pmd plugin"
+                    sh "mvn pmd:pmd"
                 }
                 
             }
@@ -37,6 +39,7 @@ pipeline {
             steps {
                 script{
                     echo "UnitTest in junit"
+                    sh "mvn test"
                 }
                 
             }
@@ -46,6 +49,7 @@ pipeline {
             steps {
                 script{
                     echo "Code Coverage by jacoco"
+                    sh "mvn verify"
                 }
                 
             }
@@ -64,6 +68,7 @@ pipeline {
                     echo "packaging the code"
                     echo 'platform is ${Platform}'
                     echo "packing the version ${params.APPVERSION}"
+                    sh "mvn package"
                 }
                 
             }
