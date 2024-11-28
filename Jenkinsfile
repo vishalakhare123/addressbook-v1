@@ -52,6 +52,13 @@ pipeline {
             
         }
         stage('Package') {
+            input{
+                message "Select the platform for deployment"
+                ok "Platform Selected"
+                parameters{
+                    choice(name:'NEWAPP',choices:['EKS','EC2','On-prem'])
+                }
+            }
             steps {
                 script{
                     echo "packaging the code"
