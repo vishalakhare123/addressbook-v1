@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     
     parameters{
         string(name:'Env',defaultValue:'Test',description:'environment to deploy')
@@ -10,6 +10,7 @@ pipeline {
 
     stages {
         stage('Compile') {
+            agent any
             steps {
                 script{
                     echo "Compiling the code"
@@ -21,6 +22,7 @@ pipeline {
             
         }
         stage('CodeReview') {
+            agent any
             steps {
                 script{
                     echo "Code Review Using pmd plugin"
@@ -31,6 +33,7 @@ pipeline {
             
         }
          stage('UnitTest') {
+            agent any
             when{
                 expression{
                     params.executeTests == true
@@ -51,6 +54,7 @@ pipeline {
             
         }
         stage('CodeCoverage') {
+            agent {label 'linux_slave'}
             steps {
                 script{
                     echo "Code Coverage by jacoco"
@@ -61,6 +65,7 @@ pipeline {
             
         }
         stage('Package') {
+            agent any
             input{
                 message "Select the platform for deployment"
                 ok "Platform Selected"
