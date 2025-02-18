@@ -11,9 +11,8 @@ pipeline {
         choice(name:'APPVERSION',choices:['1.1','1.2','1.3'])
 
     }
-    environment{
-        BUILD_SERVER='ec2-user@172.31.3.48'
-    }
+    
+    }ad
 
     stages {
         stage('Compile') {
