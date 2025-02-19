@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent none
+
+    tools{
+        maven "mymaven"
+    }
+
 
        
     parameters{
@@ -12,25 +17,33 @@ pipeline {
 
     stages {
         stage('Compile') {
+            agent any
                        steps {
-               
-                          echo "Compiling in ${params.Env}"
-                   
+               script{
+                   echo "Compiling in ${params.Env}"
+                   sh "mvn compile"
+                         
+               }
                 }
                 
             }
             
         
         stage('CodeReview') {
+            ageny any
                    steps {
                
+                    script{
                     echo "Code Review Using pmd plugin"
+                    sh "mvn pmd:pmd"
+                }
                      }
                 
             }
             
        
          stage('UnitTest') {
+            agent any
                 when{
                 expression{
                     params.executeTests == true
@@ -38,17 +51,24 @@ pipeline {
             }
             steps {
                 
+                   script{
                     echo "UnitTest in junit"
+                    sh "mvn test"
+                }
                     
                 }
                 
             }
             
         stage('CodeCoverage') {
-            
+            agent {label 'node_1'}
             steps {
-                
+              
+                   script{
                     echo "Code Coverage by jacoco"
+                    sh "mvn verify"
+                }
+
                     
                 }
                 
@@ -56,18 +76,36 @@ pipeline {
             
         
         stage('Package') {
-         
-            
-            steps {
-                
+                  agent any
+           steps {
+                script{
                     echo "packing the version ${params.APPVERSION}"
-                    
+                    sh "mvn package"
+                }
+                                   
                     
                 }
                 
             }
             
-        
-    }
+          stage('publish') {
+            agent any
+            input{
+                message "Select the platform for deployment"
+                ok "Platform Selected"
+                parameters{
+                    choice(name:'NEWAPP',choices:['EKS','EC2','On-prem'])
+                }
+            }
+            steps {
+                script{
+                    echo "publish the artifact to jfrog"
+                    sh "mvn -U deploy -s settings.xml"
+                }
+
+            }
+    } 
+}
+
 }
 
