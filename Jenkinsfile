@@ -14,7 +14,9 @@ pipeline {
 
     }
     
-
+ environment{
+        BUILD_SERVER='ec2-user@172.31.7.11'
+    }
     stages {
         stage('Compile') {
             agent any
@@ -78,10 +80,13 @@ pipeline {
                   agent any
            steps {
                 script{
+                    sshagent(['salve2']) {
                     echo "packing the version ${params.APPVERSION}"
-                    sh "mvn package"
+                    sh "scp -o StrictHostKeyChecking=no server-script.sh ${BUILD_SERVER}:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} 'bash ~/server-script.sh'"
+                    
                 }
-                                   
+                }                 
                     
                 }
                 
