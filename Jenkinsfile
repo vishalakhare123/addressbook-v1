@@ -30,7 +30,7 @@ pipeline {
             
         
         stage('CodeReview') {
-            ageny any
+            agent any
                    steps {
                     script{
                     echo "Code Review Using pmd plugin"
