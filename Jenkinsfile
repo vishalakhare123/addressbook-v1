@@ -32,7 +32,6 @@ pipeline {
         stage('CodeReview') {
             ageny any
                    steps {
-               
                     script{
                     echo "Code Review Using pmd plugin"
                     sh "mvn pmd:pmd"
