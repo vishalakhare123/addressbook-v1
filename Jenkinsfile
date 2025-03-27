@@ -11,15 +11,14 @@ pipeline {
         stage('Compile') {
             steps {                
                    echo "Compiling in ${params.Env}"
-                                 
+                              
                 
             }
             
         }
         stage('CodeReview') {
             steps {
-                
-                    echo 'Code Review Using pmd plugin'
+                        echo 'Code Review Using pmd plugin'
                     
                 }
                 
@@ -51,7 +50,7 @@ pipeline {
             
         
         stage('Package') {
-             step{
+             step {
                     echo "packing the version ${params.APPVERSION}"
                 }
             }
