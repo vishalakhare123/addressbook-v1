@@ -56,6 +56,13 @@ pipeline {
             }
 
             stage('publish') {
+                input{
+                message "Select the platform for deployment"
+                ok "Platform Selected"
+                parameters{
+                    choice(name:'Platform',choices:['EKS','EC2','On-prem'])
+                }
+            }
             steps {
                 
                     echo 'publish the artifact to jfrog'
