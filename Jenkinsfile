@@ -50,7 +50,7 @@ pipeline {
             
         
         stage('Package') {
-             step {
+             steps {
                     echo "packing the version ${params.APPVERSION}"
                 }
             }
