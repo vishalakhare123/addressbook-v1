@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>xxx</username>
-      <password>xxx</password>
+      <username>vishalakhare27@gmail.com</username>
+      <password>cmVmdGtuOjAxOjE3NzQ3OTE3NDE6a0tCSldoSnJOSndOQ2RZZk9RMnFBTjdkYkhu</password>
       <id>central</id>
     </server>
     <server>
-      <username>xxx</username>
-      <password>xxx</password>
+      <username>vishalakhare27@gmail.com</username>
+      <password>cmVmdGtuOjAxOjE3NzQ3OTE3NDE6a0tCSldoSnJOSndOQ2RZZk9RMnFBTjdkYkhu</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -21,14 +21,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>adbook-libs-release</name>
-          <url>https://trialaeybn6.jfrog.io/artifactory/adbook-libs-release</url>
+          <name>awsbook-libs-release</name>
+          <url>https://shruti1.jfrog.io/artifactory/awsbook-libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
-          <name>adbook-libs-snapshot</name>
-          <url>https://trialaeybn6.jfrog.io/artifactory/adbook-libs-snapshot</url>
+          <name>awsbook-libs-snapshot</name>
+          <url>https://shruti1.jfrog.io/artifactory/awsbook-libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -37,14 +37,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>adbook-libs-release</name>
-          <url>https://trialaeybn6.jfrog.io/artifactory/adbook-libs-release</url>
+          <name>awsbook-libs-release</name>
+          <url>https://shruti1.jfrog.io/artifactory/awsbook-libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
-          <name>adbook-libs-snapshot</name>
-          <url>https://trialaeybn6.jfrog.io/artifactory/adbook-libs-snapshot</url>
+          <name>awsbook-libs-snapshot</name>
+          <url>https://shruti1.jfrog.io/artifactory/awsbook-libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>
