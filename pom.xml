@@ -519,7 +519,7 @@
     <repository>
         <id>central</id>
         <name>a0ibx8fd8cblt-artifactory-primary-0-releases</name>
-        <url>https://awsdemoclass1.jfrog.io/artifactory/demo-libs-release-local</url>
+        <url>https://awsdemoclass1.jfrog.io/artifactory/demo-libs-release</url>
     </repository>
 </distributionManagement>
 </project>
