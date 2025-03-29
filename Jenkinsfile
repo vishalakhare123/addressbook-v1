@@ -9,8 +9,14 @@ pipeline {
     }
        stages {
         stage('Compile') {
-            steps {                
+            steps {   
+
+                 script{
+                    echo "Compiling the code"
                    echo "Compiling in ${params.Env}"
+                   sh "mvn compile"
+                }             
+                   
                               
                 
             }
@@ -18,7 +24,11 @@ pipeline {
         }
         stage('CodeReview') {
             steps {
-                        echo 'Code Review Using pmd plugin'
+                 script{
+                    echo "Code Review Using pmd plugin"
+                    sh "mvn pmd:pmd"
+                }
+                        
                     
                 }
                 
@@ -32,17 +42,29 @@ pipeline {
                 }
             }
             steps {
+                 script{
+                    echo "UnitTest in junit"
+                    sh "mvn test"
+                }
                 
-                    echo 'testing the code with junit'
-                                    }
+                    
+                 }
+                 post{
+                always{
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
                 
             }
             
          
         stage('CodeCoverage') {
             steps {
-                
-                    echo 'Code Coverage by jacoco'
+                 script{
+                    echo "Code Coverage by jacoco"
+                    sh "mvn verify"
+                }
+                    
                     
                 }
                 
@@ -51,7 +73,11 @@ pipeline {
         
         stage('Package') {
              steps {
+                 script{
                     echo "packing the version ${params.APPVERSION}"
+                    sh "mvn package"
+                }
+                    
                 }
             }
 
@@ -64,8 +90,11 @@ pipeline {
                 }
             }
             steps {
-                
+                script{
                     echo 'publish the artifact to jfrog'
+                    sh "mvn -U deploy -s settings.xml"
+                }
+                                   
                     
                 }
                 
