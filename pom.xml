@@ -518,8 +518,8 @@
    <distributionManagement>
     <repository>
         <id>central</id>
-        <name>a0ibx8fd8cblt-artifactory-primary-0-releases</name>
-        <url>https://awsdemoclass1.jfrog.io/artifactory/demo-libs-release</url>
+        <name>a0klufyxx1rft-artifactory-primary-0-releases</name>
+        <url>https://shruti1.jfrog.io/artifactory/awsbook-libs-release</url>
     </repository>
 </distributionManagement>
 </project>
