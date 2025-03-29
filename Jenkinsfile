@@ -133,7 +133,7 @@ pipeline {
             
          
         stage('CodeCoverage') {
-            steps {
+            steps{
                  script{
                     echo "Code Coverage by jacoco"
                     sh "mvn verify"
